@@ -26,47 +26,45 @@ switch (command) {
     case "do-what-it-says":
         doThis(value);
         break;
+    default: console.log("Wrong command! Try one of these: node liri.js concert-this  node liri.js spotify-this   node liri.js  movie-this  node liri.js do-what-it-says")
+        break;
 };
 
-// commands:
-// concert-this
-// spotify-this-song
-// movie-this
-// do-what-it-says
+// commands: concert-this, spotify-this-song, movie-this, do-what-it-says
 
-function spotifySong(value) {
-    if (!value) {
-        value = "The Sign";
-    }
-    spotify
-        .search({
-            type: 'track',
-            query: value
-        })
-        .then(function (response) {
-            for (var i = 0; i < 5; i++) {
-                var spotifyResults =
-                    "--------------------------------------------------------------------" +
-                    "\nArtist(s): " + response.tracks.items[i].artists[0].name +
-                    "\nSong Name: " + response.tracks.items[i].name +
-                    "\nAlbum Name: " + response.tracks.items[i].album.name +
-                    "\nPreview Link: " + response.tracks.items[i].preview_url;
+// function spotifySong(value) {
+//     if (!value) {
+//         value = "The Sign";
+//     }
+//     spotify
+//         .search({
+//             type: 'track',
+//             query: value
+//         })
+//         .then(function (response) {
+//             for (var i = 0; i < 5; i++) {
+//                 var spotifyResults =
+//                     "--------------------------------------------------------------------" +
+//                     "\nArtist(s): " + response.tracks.items[i].artists[0].name +
+//                     "\nSong Name: " + response.tracks.items[i].name +
+//                     "\nAlbum Name: " + response.tracks.items[i].album.name +
+//                     "\nPreview Link: " + response.tracks.items[i].preview_url;
 
-                console.log(spotifyResults);
-            }
-        })
-        .catch(function (err) {
-            console.log(err);
-        });
+//                 console.log(spotifyResults);
+//             }
+//         })
+//         .catch(function (err) {
+//             console.log(err);
+//         });
 
 
-function doThis(value) {
+// function doThis(value) {
 
-    fs.readFile("random.txt", "utf8", function (error, data) {
-        if (error) {
-            return console.log(error);
-        }
-        var dataArr = data.split(',');
-        spotifySong(dataArr[0], dataArr[1]);
-    })
-};
+//     fs.readFile("random.txt", "utf8", function (error, data) {
+//         if (error) {
+//             return console.log(error);
+//         }
+//         var dataArr = data.split(',');
+//         spotifySong(dataArr[0], dataArr[1]);
+//     })
+// };
